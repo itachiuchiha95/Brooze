@@ -10,81 +10,95 @@ if "route" not in st.session_state:
 st.markdown(
     """
 <style>
+/* Hide Streamlit chrome */
+#MainMenu, header, footer { visibility: hidden; }
+
+/* App background */
 .stApp {
-  background: linear-gradient(180deg, #0b0b0d 0%, #0a0a0c 100%);
+  background: #050506;
 }
 
-.container {
-  max-width: 360px;
+/* iPhone 16 Pro Max frame */
+.mobile {
+  width: 440px;           /* iPhone 16 Pro Max width */
+  min-height: 956px;      /* iPhone 16 Pro Max height */
   margin: 0 auto;
-  padding-top: 90px;
+  background: linear-gradient(180deg, #0b0b0d 0%, #070709 100%);
+  border-radius: 36px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 70px rgba(0,0,0,0.6);
+
+  /* Safe areas */
+  padding-top: 64px;     /* Dynamic Island safe space */
+  padding-bottom: 36px;  /* Home indicator safe space */
+  padding-left: 24px;
+  padding-right: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centered content */
+.center {
   text-align: center;
 }
 
 /* Logo */
-.logo {
-  width: 64px;
+.center img {
+  display: block;
   margin: 0 auto 20px auto;
 }
 
-/* Text */
+/* Title */
 h1.title {
   margin: 0;
-  color: #ffffff;
-  font-size: 34px;
+  font-size: 36px;
   font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.3px;
 }
+
+/* Subtitle */
 p.subtitle {
-  margin: 8px 0 28px 0;
+  margin: 10px 0 32px 0;
+  font-size: 15px;
   color: rgba(255,255,255,0.7);
-  font-size: 14px;
 }
 
 /* Buttons */
 div.stButton > button {
   width: 100%;
-  height: 48px;
-  border-radius: 10px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
+  height: 56px;
+  border-radius: 14px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  font-size: 15px;
 }
 
+/* Primary button */
 .filled div.stButton > button {
   background: #c56bff !important;
   color: #0b0b0d !important;
   border: 1px solid #c56bff !important;
 }
 
+/* Divider */
+.divider {
+  margin: 22px 0;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* Secondary button */
 .outlined div.stButton > button {
   background: transparent !important;
   color: #c56bff !important;
   border: 1px solid #c56bff !important;
 }
-
-.divider {
-  margin: 18px 0;
-  height: 1px;
-  background: rgba(255,255,255,0.12);
-}
 </style>
 """,
     unsafe_allow_html=True,
 )
-
-# ---- SCREENS ----
-def landing():
-    st.markdown('<div class="container">', unsafe_allow_html=True)
-
-    # Logo
-    st.image("assets/logo.png", width=64)
-
-    st.markdown(
-        """
-        <h1 class="title">Brooze</h1>
-        <p class="subtitle">Bar hopping just got more rewarding</p>
-        """,
-        unsafe_allow_html=True,
-    )
 
     st.markdown('<div class="filled">', unsafe_allow_html=True)
     if st.button("SIGN UP"):
